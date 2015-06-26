@@ -1,0 +1,14 @@
+﻿Build started 6/26/2015 3:53:39 AM.
+     1>Project "C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\ID3_Algorithm\ID3_Algorithm.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
+         Main.cpp
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(138): warning C4018: '<' : signed/unsigned mismatch
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\Debug\ID3_Algorithm.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\Debug\ID3_Algorithm.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\Debug\ID3_Algorithm.lib" /MACHINE:X86 Debug\Main.obj
+         ID3_Algorithm.vcxproj -> C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\Debug\ID3_Algorithm.exe
+     1>Done Building Project "C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\ID3_Algorithm\ID3_Algorithm.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.86
