@@ -1,50 +1,43 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/gradient"
+    tools:context=".MainActivity" >
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="188dp"
+        android:layout_marginRight="67dp"
+        android:onClick="speakText"
+        android:text="@string/text1" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="81dp"
+        android:ems="10" >
+        <requestFocus />
+    </EditText>
 
     <TextView
-        android:id="@+id/txtSpeechInput"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:textColor="#FFFFFF"
-        android:textSize="26dp"
-        android:textStyle="normal" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp"
-        android:gravity="center"
-        android:orientation="vertical" >
-
-        <Button
-            android:id="@+id/btnSpeak"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tap to Speak"
-            android:background="@null" />
-
-        <Button
-            android:id="@+id/btnListen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tap to Listen"
-            android:background="@null" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/tap_on_mic"
-            android:textColor="#FFFFFF"
-            android:textSize="15dp"
-            android:textStyle="normal" />
-    </LinearLayout>
-
+        android:layout_marginTop="20dp"
+        android:text="@string/write"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 </RelativeLayout>
