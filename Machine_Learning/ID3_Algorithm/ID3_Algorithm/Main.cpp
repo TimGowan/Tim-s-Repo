@@ -2,7 +2,8 @@
 Author: Tim Gowan
 Date: 26 June, 2015
 Summary: 
-	A simplified version of the ID3 Machine Learning Classification Algorithm. 
+	A simplified version of the ID3 Machine Learning Classification Algorithm. Uses Conditional Entropy 
+	and Gain to determine next-step partitioning of a set of partition.	
 
 Command-Line Arguments format:  main.cpp -[Dataset Filename] -[Partion Filename] -[Output Filename]
 
@@ -23,7 +24,8 @@ Input File Description:
 	1 1 1 0
 	0 0 1 0
 	1 0 1 0
-	-------------------------	A partition is described in a text file (named "partition-2.txt), containing only integer numbers. For a situation where there
+	-------------------------
+	A partition is described in a text file (named "partition-2.txt), containing only integer numbers. For a situation where there
 	are m instances, a partition is described by a sequence of numbers in the range 1 . . . m.
 	The first number in each partition is the partition id, and each partition is specified in a separate
 	line
@@ -50,13 +52,16 @@ int numLabels(std::string filename);
 int** processDataset(std::string filename);
 std::vector<std::vector<int>> processPartitions(std::string filename);
 std::vector<std::vector<int>> splitPartition(int** dataset, std::vector<int> partition, int examplesCount, int labelsCount, int labelIndex);
+std::vector<std::vector<int>> getPartitionDataVector(int** dataset, std::vector<int> partition, int examplesCount, int labelsCount);
 int target_label_count(int** dataset, int size);
 int** getPartitionDataset(int** dataset, std::vector<int> partition, int examplesCount, int labelsCount);
 int label_count(int** dataset, int label_index);
 int label_count(int** dataset, int label_index, int size);
 double divide(double dividend, double divisor);
 double calc_entropy(std::vector<std::double_t> p_set);
-double calc_conditional_entropy(int** dataset, std::vector<int> partition, int examplesCount, int labelsCount);
+double calc_conditional_entropy(std::vector<std::double_t> p_set, std::vector<std::double_t> e_set);
+int printPartition(std::vector<std::vector<int>> p);
+int  printPartition(std::vector<std::vector<int>> p, int labelIndex);
 
 //*****************Main**************************
 using namespace std;
@@ -72,7 +77,7 @@ int main(int argc, char* argv[])
 	if (argc!=3){
 		dataset_filename = "dataset-1.txt";
 		partitions_filename = "partition-1.txt";
-		partitions_filename = "partition-2.txt";  //root node testing partition
+	//	partitions_filename = "partition-2.txt";  //root node testing partition
 		output_filename = "output.txt";
 	}
 	else{
@@ -114,38 +119,20 @@ int main(int argc, char* argv[])
 
 
 	//*****************Calculating Target Entropy*************************
-	std::vector<std::double_t> p_set;
-	std::vector<std::double_t> e_set;
 
-	/*
-	int targetCount = 0;
-	for (int i = 0; i <examplesCount; i++){
-			targetCount += dataset[i][labelsCount-1]; // counting number of hits of Target Label
-	}
-
-	p_set.push_back(divide(targetCount, examplesCount));
-	p_set.push_back(divide(examplesCount-targetCount, examplesCount));
-
-	targetEntropy = calc_entropy(p_set);
-	std::cout << "Entropy of Target Attribute: " << targetEntropy << '\n';
-
-	p_set.clear();
-
-
-	//std::vector<double>::const_iterator i;
-	for (i = p_set.begin(); i != p_set.end(); ++i)
-		std::cout << (*i) << std::endl;
-
-
-	//Same functionality as above for-loop
-	std::cout << p_set[0] << '\n';
-	std::cout << p_set[1] << '\n';
-	*/
-
-	int**		partitionDataset;
-	int			labelIndex = 1;
-	int			indexedLabelCount;
-	int			targetLabelCount;
+	std::vector<std::double_t>		p_set;
+	std::vector<std::double_t>		e_set;
+	std::vector<std::double_t>		e2_set;
+	std::vector<std::double_t>		p2_set;
+	int**							partitionDataset;
+	int								labelIndex = 1;
+	int								indexedLabelCount;
+	int								targetLabelCount;
+	int								temp;
+	std::vector<std::vector<int>>	candidateSubpartition; 
+	double							candidate_entropy;
+	double							candidate_conditional_entropy;
+	int								currentIndex;
 
 	//Looping through each partition to calculate Gain(maximize) or Conditional_Entropy(minimize)
 	for (int i = 0; i < partitions.size(); i++){
@@ -157,35 +144,75 @@ int main(int argc, char* argv[])
 		int const targetLabelCount = target_label_count(partitionDataset, partitions[i].size()-1);
 
 		if (targetLabelCount == 0 || targetLabelCount == partitions[i].size()){
-			std::cout << "All instances in partition have same value for target attribute." << endl;
+			std::cout << "All instances in partition"<< partitions[i][0] <<" have same value for target attribute." << endl;
 		}
 		else{
-			splitPartition(dataset, partitions[i], examplesCount, labelsCount, 0);
+
+			p2_set.push_back(divide(targetLabelCount, partitions[i].size()));
+			p2_set.push_back(divide(partitions[i].size() - targetLabelCount, partitions[i].size())); //Saving ratios of Target Label to Total
+
 			//*****Compute Gain/Entropy*******
 
 			//Looping through each attribute label
 			for (int j = 0; j < sizeof(partitionDataset[0]); j++){
+				candidateSubpartition = splitPartition(dataset, partitions[i], examplesCount, labelsCount, j); 
+				cout <<endl<< "Splitting with candidate label #" << j <<"..."<< endl;
+				printPartition(candidateSubpartition);
+
+				temp = partitions[i].size() - 1;
 
 
-				//subPartitionDataset = getPartitionDataset(partitionDataset, subPartitions[i], subPartitions.size(),subPartitions[i].size());
 				indexedLabelCount = label_count(partitionDataset, j, partitions[i].size() - 1);
 				//std::cout << "Attribute"<< j <<" Count: " << indexedLabelCount <<'/'<<partitions[i].size()-1<< endl;
+				if (indexedLabelCount == temp){ // Candidate Entropy will be 1.
+					p_set.push_back(0); 
+					p_set.push_back(1);
+				}
+				else{
+					p_set.push_back(divide(indexedLabelCount, temp));
+					p_set.push_back(divide(temp - indexedLabelCount, temp));
+				}
+				candidate_entropy = calc_entropy(p_set);
+			//	std::cout << "Entropy of Indexed Label: " << candidate_entropy << '\n';
+				e_set.push_back(candidate_entropy);   
+				p_set.clear();
 
+
+				candidate_conditional_entropy = calc_conditional_entropy(p2_set, e_set);
 
 			}
+			e_set.clear();
+
 		}
+		p2_set.clear();
+
 		std::cout << endl;
 	}
+	std::cout << endl;
+	std::cout << endl;
+	std::cout << endl;
+	std::cout << endl;
+	std::cout << endl;
+	e_set.clear();
+	p_set.clear();
+	p2_set.clear();
+
+
+	p2_set.push_back(.75);
+	p2_set.push_back(.25);
+
+	p_set.push_back(.33333);
+	p_set.push_back(.66666);
+
+	e_set.push_back( calc_entropy(p_set));
+	e_set.push_back(1);
+
+	candidate_entropy = calc_conditional_entropy(p2_set, e_set);
+	std::cout << "Lowest Conditional Entropy: " << candidate_entropy << '\n';
+
+
 
 	return 0;
-}
-
-double calc_entropy(std::vector<std::double_t> e_set){
-	//where e_set is the set of probabilities to be used as input in summation formula for entropy value
-	double entropy = 0;
-	for (int i = 0; i < e_set.size(); i++)
-		entropy += e_set[i] * log2(1 / e_set[i]); // Calculate entropy and sum
-	return entropy;
 }
 
 double calc_conditional_entropy(std::vector<std::double_t> p_set, std::vector<std::double_t> e_set){
@@ -196,13 +223,52 @@ double calc_conditional_entropy(std::vector<std::double_t> p_set, std::vector<st
 			conditionalEntropy += p_set[i] * e_set[i];
 		}
 	else
-		cout << "p_set, e_set size mismatch";
+				cout << "                          p_set size =" << p_set.size() << ", e_set size = " << e_set.size()<< endl;
 
-	return conditionalEntropy;
+			std::cout << "Conditional Entropy of Indexed Label: " << conditionalEntropy << '\n';
+		return conditionalEntropy;
+}
+int  printPartition(std::vector<std::vector<int>> p, int labelIndex){
+	//Printing contents of partitions file for posterity
+	std::cout << endl;
+	for (int i = 0; i < p.size(); i++){
+		std::cout << "Candidate Partition" << p[i][0] << " contains ( ";
+		for (int j = 1; j < p[i].size(); j++){
+			std::cout << p[i][j] << ' ';
+		}
+		std::cout << ") and was split using label index of "<< labelIndex<< endl;
+	}
+	std::cout << endl;
+	return 0;
+}
+int  printPartition(std::vector<std::vector<int>> p){
+	//Printing contents of partitions file for posterity
+	std::cout << endl;
+	for (int i = 0; i < p.size(); i++){
+		std::cout << "Candidate Partition" << p[i][0] << " contains ( ";
+		for (int j = 1; j < p[i].size(); j++){
+			std::cout << p[i][j] << ' ';
+		}
+		std::cout << ")" << endl;
+	}
+	std::cout << endl;
+	return 0;
+}
+
+double calc_entropy(std::vector<std::double_t> e_set){
+	//where e_set is the set of probabilities to be used as input in summation formula for entropy value
+	double entropy = 0;
+	for (int i = 0; i < e_set.size(); i++)
+		if (e_set[i] == 0)
+			entropy += 0; //Avoid divide by 0
+		else
+			entropy += e_set[i] * log2(1 / e_set[i]); // Calculate entropy and sum
+	return entropy;
 }
 
 std::vector<std::vector<int>> splitPartition(int** dataset, std::vector<int> partition, int examplesCount, int labelsCount, int labelIndex){
 	std::vector<std::vector<int>> subPartitions;
+	std::vector<std::vector<int>> partitionDataVector;
 	std::vector<int> temp0;
 	std::vector<int> temp1;
 	int** partitionDataset;
@@ -217,12 +283,10 @@ std::vector<std::vector<int>> splitPartition(int** dataset, std::vector<int> par
 
 	
 	partitionDataset = getPartitionDataset(dataset, partition, examplesCount, labelsCount);
-	for (int i = 0; i <= examplesCount; i++)
+	for (int i = 0; i < examplesCount; i++)
 		for (int j = 1; j < partition.size(); j++){ // loop through partition
-			//cout << "At: i=" << i << " j=" << j<<" partition[j] =" <<partition[j]<< endl;	
-			bool x = (partition[j] == i);
-			if ( x ) //if index of dataset is inside parition
-				if (partitionDataset[i][labelIndex] == 0) // if we found a 0
+			if (partition[j] == i) //if index of dataset is inside parition
+				if (dataset[i][labelIndex] == 0) // if we found a 0
 					temp0.push_back(partition[j]); //save index of dataset found in partition
 				else
 					temp1.push_back(partition[j]);
@@ -234,16 +298,6 @@ std::vector<std::vector<int>> splitPartition(int** dataset, std::vector<int> par
 	temp0.clear();
 	temp1.clear();
 
-	//Printing contents of partitions file for posterity
-	std::cout << endl;
-	for (int i = 0; i < subPartitions.size(); i++){
-		std::cout << "Partition" << subPartitions[i][0] << " contains ( ";
-		for (int j = 1; j < subPartitions[i].size(); j++){
-			std::cout << subPartitions[i][j] << ' ';
-		}
-		std::cout << ")" << endl;
-	}
-	std::cout << endl;
 	return subPartitions;
 }
 
@@ -284,20 +338,19 @@ int** getPartitionDataset(int** dataset, std::vector<int> partition, int example
 				partition_dataset[j] = dataset[i-1];
 			}
 	}
-
+	/*
 	//Print contents of partition dataset
-	std::cout << "Partition Dataset Contents: " << endl;
+	std::cout << "Partition"<<partition[0] <<" contains Dataset Contents: " << endl;
 	for (int i = 1; i < partition.size(); i++){
 		for (int j = 0; j < labelsCount; j++){
 			std::cout << partition_dataset[i][j] << ' ';
 		}
 		std::cout << endl;
 	}
-
+	*/
 
 	return partition_dataset;
 }
-
 
 int label_count(int** dataset, int label_index, int size){ 
 	// counting number of hits of Target Label

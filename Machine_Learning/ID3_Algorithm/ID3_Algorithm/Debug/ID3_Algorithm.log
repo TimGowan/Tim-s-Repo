@@ -1,28 +1,29 @@
-﻿Build started 6/26/2015 4:27:43 PM.
-     1>Project "C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\ID3_Algorithm\ID3_Algorithm.vcxproj" on node 2 (Rebuild target(s)).
-     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppClean.targets(76,5): warning : The process cannot access the file 'c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\debug\id3_algorithm.pdb' because it is being used by another process.
+﻿Build started 6/27/2015 9:52:27 AM.
+     1>Project "C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\ID3_Algorithm\ID3_Algorithm.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(106): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(108): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(151): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(148): warning C4101: 'targetLabelCount' : unreferenced local variable
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(186): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(195): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(221): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(239): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(241): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(256): warning C4018: '<=' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(263): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(282): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(290): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(340): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(110): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(112): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(163): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(160): warning C4101: 'currentIndex' : unreferenced local variable
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(155): warning C4101: 'targetLabelCount' : unreferenced local variable
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(247): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(259): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(261): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(272): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(274): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(286): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(313): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(336): warning C4018: '<=' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(343): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(362): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\id3_algorithm\id3_algorithm\main.cpp(420): warning C4018: '<' : signed/unsigned mismatch
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\Debug\ID3_Algorithm.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\Debug\ID3_Algorithm.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\Debug\ID3_Algorithm.lib" /MACHINE:X86 Debug\Main.obj
          ID3_Algorithm.vcxproj -> C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\Debug\ID3_Algorithm.exe
-     1>Done Building Project "C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\ID3_Algorithm\ID3_Algorithm.vcxproj" (Rebuild target(s)).
+     1>Done Building Project "C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\ID3_Algorithm\ID3_Algorithm\ID3_Algorithm.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.96
+Time Elapsed 00:00:00.92
