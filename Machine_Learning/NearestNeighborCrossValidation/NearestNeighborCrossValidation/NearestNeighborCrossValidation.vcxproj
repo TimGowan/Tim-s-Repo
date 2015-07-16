@@ -76,17 +76,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="CrossValidation.cpp" />
-    <ClCompile Include="NearestNeighbor.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CrossValidation.h" />
-    <ClInclude Include="NearestNeighbor.h" />
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="..\..\..\..\..\..\..\Desktop\NN_CV\CV-1.txt" />
     <Text Include="..\..\..\..\..\..\..\Desktop\NN_CV\dataset-1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CVNN.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
