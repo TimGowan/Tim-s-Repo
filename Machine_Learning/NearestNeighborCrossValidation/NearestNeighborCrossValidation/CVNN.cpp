@@ -2,6 +2,7 @@
 // Author: Tim Gowan
 // Date: 7/12/2015
 // Description: A program to implement cross validation evaluation of the k-nearest-neighbors algorithm based upon given input files.
+// Using the cross validation, standard deviation(sigma) is then computed off of the number of incorrectly labeled inputs.
 */
 
 
@@ -63,7 +64,7 @@ int main(int argc, char* argv[])
 	data						baseData;
 	CV_Permutations				CVFile;
 
-	unsigned int				k = 5; 
+	unsigned int				k = 5; // Number of Nearest Neighbors to account for.
 	double						V=0;
 
 	std::string					CV_filename; //CV = Cross Validation
@@ -85,8 +86,8 @@ int main(int argc, char* argv[])
 	for (k = 1; k <= 5; k++){ //Calculate for k-nearest-neighbors = {1,2,3,4,5}
 		cout << "k=" << k;
 		cout << "   e=" << eCalc(baseData, CVFile, k);
-		V = VCalc(baseData, CVFile, k);
-		cout << "   sigma=" << sqrt(V);
+		V = VCalc(baseData, CVFile, k); // V = Variance
+		cout << "   sigma=" << sqrt(V); // Sigma = Standard Deviation.
 		cout << endl;
 		gridMe(k, baseData);
 	}
@@ -96,7 +97,7 @@ double VCalc(data baseData, CV_Permutations CVFile, int k){
 	double						V = 0;
 	double						e = eCalc(baseData, CVFile, k);
 
-	for (int i = 0; i < t - 1; i++){ //compute V
+	for (int i = 0; i < t ; i++){ //compute Variance
 		double temp = CrossValidate(foldData(baseData, CVFile, i), CVFile, k)-e;
 		V += (pow(temp, 2)) / (t - 1);
 	}
@@ -149,7 +150,7 @@ double CrossValidate(std::vector<std::vector<example>> in, CV_Permutations CVFil
 			if (testing[z].y != nearestNeighborAlgorithm(k, testing[z], training))
 				numErrors++;
 		}
-	//	std::cout <<endl <<"numErrors in this fold:" << numErrors << endl;
+		//std::cout <<endl <<"numErrors in this fold:" << numErrors << endl;
 
 		totalErrors += numErrors;
 		numErrors = 0;
@@ -172,7 +173,7 @@ std::vector<std::vector<example> > foldData(data input, CV_Permutations CVFile, 
 
 
 	numFolds = determineFolds(CVFile.numFolds, CVFile.numExamples);
-	//numFolds = determineFolds(CVFile.numExamples, CVFile.numExamples);  //Leave-one-out approach where numFolds == numExamples
+	//numFolds = determineFolds(CVFile.numExamples, CVFile.numExamples);  //Leave-one-out test case where numFolds == numExamples
 
 	//determine order of 'shuffle'
 	permutation = CVFile.permutations[permutationIndex];
@@ -303,7 +304,7 @@ char nearestNeighborsLabel(std::vector<example> nearestNeighbors, int x){
 	int			countPos = 0;
 	int			countNeg = 0;
 	char		assignedLabel;
-	int			temp = x;
+	int			temp = x; // x is the number of nearest neighbors we are supposed to take into account
 
 	std::sort(nearestNeighbors.begin(), nearestNeighbors.end(), by_distance); // sort by distance
 
