@@ -1,4 +1,4 @@
-﻿Build started 7/17/2015 5:55:36 PM.
+﻿Build started 7/17/2015 11:24:22 PM.
      1>Project "C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\NearestNeighborCrossValidation\NearestNeighborCrossValidation\NearestNeighborCrossValidation.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CVNN.cpp
@@ -8,16 +8,17 @@
      1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(131): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(138): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(149): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(183): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(193): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(244): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(256): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(271): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(293): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(287): warning C4101: 'tLabel' : unreferenced local variable
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(312): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(185): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(195): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(237): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(247): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(259): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(274): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(296): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(290): warning C4101: 'tLabel' : unreferenced local variable
      1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(315): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(455): warning C4715: 'readDataset' : not all control paths return a value
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(318): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\tim\documents\github\tim-s-repo\tim-s-repo\machine_learning\nearestneighborcrossvalidation\nearestneighborcrossvalidation\cvnn.cpp(458): warning C4715: 'readDataset' : not all control paths return a value
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\NearestNeighborCrossValidation\Debug\NearestNeighborCrossValidation.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\NearestNeighborCrossValidation\Debug\NearestNeighborCrossValidation.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\NearestNeighborCrossValidation\Debug\NearestNeighborCrossValidation.lib" /MACHINE:X86 Debug\CVNN.obj
          NearestNeighborCrossValidation.vcxproj -> C:\Users\Tim\Documents\GitHub\Tim-s-Repo\Tim-s-Repo\Machine_Learning\NearestNeighborCrossValidation\Debug\NearestNeighborCrossValidation.exe
@@ -25,4 +26,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.03
+Time Elapsed 00:00:01.02

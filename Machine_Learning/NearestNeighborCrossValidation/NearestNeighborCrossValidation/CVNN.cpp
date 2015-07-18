@@ -175,6 +175,8 @@ std::vector<std::vector<example> > foldData(data input, CV_Permutations CVFile, 
 	numFolds = determineFolds(CVFile.numFolds, CVFile.numExamples);
 	//numFolds = determineFolds(CVFile.numExamples, CVFile.numExamples);  //Leave-one-out test case where numFolds == numExamples
 
+
+
 	//determine order of 'shuffle'
 	permutation = CVFile.permutations[permutationIndex];
 	//std::cout<<endl << "Selected Shuffle: " << endl;
@@ -210,7 +212,6 @@ std::vector<int> determineFolds(int numFolds, int numExamples){
 	int temp;
 	int remainder;
 
-	//int* folds = new int[numFolds]; // allocate an array with one slot for each fold
 
 	if (numExamples%numFolds == 0){ // if the examples divide evenly
 		temp = numExamples / numFolds;
@@ -224,15 +225,17 @@ std::vector<int> determineFolds(int numFolds, int numExamples){
 		temp = (int)numExamples / numFolds;
 			for (int i = 0; i < numFolds; i++){
 				if (remainder > 0){
-					folds.push_back(temp + 1);
+					folds.push_back(temp+1);
 					remainder--; //Distribute remainder;
 				}
 				else
 					folds.push_back(temp);
 			}
 	}
+	std::reverse(folds.begin(), folds.end()); // Invert order to satisfy project constraint
+
 	//for (int i = 0; i < folds.size(); i++)
-		//cout << "fold" << i << " has " << folds[i] << endl;;
+		//cout << "fold" << i << " has " << folds[i] << endl;
 
 	return folds;
 }
