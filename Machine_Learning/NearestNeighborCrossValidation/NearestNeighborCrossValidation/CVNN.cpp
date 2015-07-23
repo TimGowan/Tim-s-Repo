@@ -457,7 +457,12 @@ data readDataset(std::string filename){
 	}
 }
 
-bool by_distance(const example& lhs, const example& rhs) { return lhs.distance < rhs.distance; }
+bool by_distance(const example& lhs, const example& rhs) { 
+	if (lhs.distance == rhs.distance) // If distance is tied, favor '-' as described in requirements
+		return lhs.y > rhs.y;
+	else
+		return lhs.distance < rhs.distance;
+}
 
 bool by_x2_x1(const example& lhs, const example& rhs) { //Sorting by 2 columns
 	if (lhs.x2 == rhs.x2)
