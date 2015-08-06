@@ -311,7 +311,7 @@ char nearestNeighborsLabel(std::vector<example> nearestNeighbors, int x){
 
 	std::sort(nearestNeighbors.begin(), nearestNeighbors.end(), by_distance); // sort by distance
 
-
+	
 	for (int k = 0; k < nearestNeighbors.size(); k++){ //printing contents of nearestNeighbor
 	//std::cout << nearestNeighbors[k].x1 << " | " << nearestNeighbors[k].x2 << " | " << nearestNeighbors[k].y << " | " << nearestNeighbors[k].distance << endl;
 	}
